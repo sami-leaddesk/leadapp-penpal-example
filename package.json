@@ -1,0 +1,21 @@
+{
+  "name": "leadapp-penpal-example",
+  "version": "1.0.0",
+  "description": "Example application using 'leadapp-penpal-poc'",
+  "main": "index.js",
+  "dependencies": {
+    "leadapp-penpal-poc": "0.0.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=development",
+    "start": "webpack-dev-server --open"
+  },
+  "author": "development@leaddesk.com",
+  "license": "ISC"
+}

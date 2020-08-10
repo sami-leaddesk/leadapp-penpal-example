@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeadApp example</title>
+    <style>
+      body {
+        background: lightskyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Penpal try-out
+      <a target="_blank" href="https://github.com/Aaronius/penpal"
+        >https://github.com/Aaronius/penpal</a
+      >
+    </p>
+    <label>Fullscreen</label>
+    <button id="fse">enable</button>
+    <button id="fsd">disable</button>
+    <br />
+
+    <label>Call</label>
+    <button id="call">start (not supported)</button>
+    <br />
+
+    <label>Assisted<input type="text" id="number" /></label>
+    <button id="transfer">Call</button><br />
+
+    <hr />
+    <button id="add-paragraph">Add Content</button>
+    <button id="add-block">Add wide block</button>
+    <section id="content"></section>
+
+    <script defer src="bundle.js"></script>
+  </body>
+</html>
