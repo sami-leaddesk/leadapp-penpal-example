@@ -4,7 +4,7 @@
   "description": "Example application using 'leadapp-penpal-poc'",
   "main": "index.js",
   "dependencies": {
-    "leadapp-penpal-poc": "0.0.3"
+    "leadapp-penpal-poc": "0.0.4"
   },
   "devDependencies": {
     "webpack": "^4.44.1",

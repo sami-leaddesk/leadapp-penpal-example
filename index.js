@@ -2,6 +2,7 @@ import { LeadAppApi } from "leadapp-penpal-poc";
 
 LeadAppApi()
   .then((api) => {
+    Object.assign(window, {LeadApp: api});
     document.querySelector("#fse").addEventListener("click", () => {
       api
         .fullscreenEnable()
