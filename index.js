@@ -29,164 +29,34 @@ LeadAppApi()
 
     document.querySelector("#modify").addEventListener("click", async () => {
       try {
-        await api.contactModify({
-          first_name: document.querySelector("#first_name").value,
-          last_name: document.querySelector("#last_name").value,
-          ssc: document.querySelector("#ssc").value,
-          title: document.querySelector("#title").value,
-          www: document.querySelector("#www").value,
-          birth_year: document.querySelector("#birth_year").value,
-          gender: document.querySelector("#gender").value,
-          address: {
-            country: document.querySelector("#country").value,
-            city: document.querySelector("#city").value,
-            postal_code: document.querySelector("#postal_code").value,
-            street_address: document.querySelector("#street_address").value,
-          },
-          email: document.querySelector("#email").value,
-          other_infos : [
-            {
-              id: 1,
-              value: document.querySelector("#other_infos_1").value
-            },
-            {
-              id: 2,
-              value: document.querySelector("#other_infos_2").value
-            },
-            {
-              id: 3,
-              value: document.querySelector("#other_infos_3").value
-            },
-            {
-              id: 4,
-              value: document.querySelector("#other_infos_4").value
-            },
-            {
-              id: 5,
-              value: document.querySelector("#other_infos_5").value
-            },
-            {
-              id: 6,
-              value: document.querySelector("#other_infos_6").value
-            },
-            {
-              id: 7,
-              value: document.querySelector("#other_infos_7").value
-            },
-            {
-              id: 8,
-              value: document.querySelector("#other_infos_8").value
-            },
-            {
-              id: 9,
-              value: document.querySelector("#other_infos_9").value
-            },
-            {
-              id: 10,
-              value: document.querySelector("#other_infos_10").value
-            },
-            {
-              id: 11,
-              value: document.querySelector("#other_infos_11").value
-            },
-            {
-              id: 12,
-              value: document.querySelector("#other_infos_12").value
-            },
-            {
-              id: 13,
-              value: document.querySelector("#other_infos_13").value
-            },
-            {
-              id: 14,
-              value: document.querySelector("#other_infos_14").value
-            },
-            {
-              id: 15,
-              value: document.querySelector("#other_infos_15").value
-            },
-            {
-              id: 16,
-              value: document.querySelector("#other_infos_16").value
-            },
-            {
-              id: 17,
-              value: document.querySelector("#other_infos_17").value
-            },
-            {
-              id: 18,
-              value: document.querySelector("#other_infos_18").value
-            },
-            {
-              id: 19,
-              value: document.querySelector("#other_infos_19").value
-            },
-            {
-              id: 20,
-              value: document.querySelector("#other_infos_20").value
-            },
-            {
-              id: 21,
-              value: document.querySelector("#other_infos_21").value
-            },
-            {
-              id: 22,
-              value: document.querySelector("#other_infos_22").value
-            },
-            {
-              id: 23,
-              value: document.querySelector("#other_infos_23").value
-            },
-            {
-              id: 24,
-              value: document.querySelector("#other_infos_24").value
-            },
-            {
-              id: 25,
-              value: document.querySelector("#other_infos_25").value
-            },
-            {
-              id: 26,
-              value: document.querySelector("#other_infos_26").value
-            },
-            {
-              id: 27,
-              value: document.querySelector("#other_infos_27").value
-            },
-            {
-              id: 28,
-              value: document.querySelector("#other_infos_28").value
-            },
-            {
-              id: 29,
-              value: document.querySelector("#other_infos_29").value
-            },
-            {
-              id: 30,
-              value: document.querySelector("#other_infos_30").value
-            },
-            {
-              id: 31,
-              value: document.querySelector("#other_infos_31").value
-            },
-            {
-              id: 32,
-              value: document.querySelector("#other_infos_32").value
-            },
-            {
-              id: 33,
-              value: document.querySelector("#other_infos_33").value
-            },
-            {
-              id: 34,
-              value: document.querySelector("#other_infos_34").value
-            },
-            {
-              id: 35,
-              value: document.querySelector("#other_infos_35").value
-            },
-           ],
-        });
+        var modifiedContact = {};
+        var mainKeys = ["first_name", "last_name", "ssc", "title", "www", "birth_year", "gender", "address", "email", "other_infos"];
+        for (var i = 0; i < mainKeys.length; i++) {
+          if (mainKeys[i] === "address") {
+            if (document.querySelector("#country").value) {
+              modifiedContact['address']['country'] = document.querySelector("#country").value
+            }
+            if (document.querySelector("#city").value) {
+              modifiedContact['address']['city'] = document.querySelector("#city").value
+            }
+            if (document.querySelector("#postal_code").value) {
+              modifiedContact['address']['postal_code'] = document.querySelector("#postal_code").value
+            }
+            if (document.querySelector("#street_address").value) {
+              modifiedContact['address']['street_address'] = document.querySelector("#street_address").value
+            }
+          } else if (mainKeys[i] === "other_infos") {
+            for (var index = 1; index <= 35; index++) {
+              if (document.querySelector("#other_infos_" + index).value) {
+                modifiedContact['other_infos']['id'] = index;
+                modifiedContact['other_infos']['value'] = document.querySelector("#other_infos_" + index).value;
+              }
+            }
+          } else if (document.querySelector("#" + mainKeys[i]).value) {
+            modifiedContact[mainKeys[i]] = document.querySelector("#" + mainKeys[i]).value
+          }
+        }
+        await api.contactModify(modifiedContact);
       } catch (err) {
           console.error("component", "contactModify", err);
       }
