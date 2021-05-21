@@ -30,6 +30,8 @@ LeadAppApi()
     document.querySelector("#modify").addEventListener("click", async () => {
       try {
         var modifiedContact = {};
+        modifiedContact['address'] = {};
+        modifiedContact['other_infos'] = {};
         var mainKeys = ["first_name", "last_name", "ssc", "title", "www", "birth_year", "gender", "address", "email", "other_infos"];
         for (var i = 0; i < mainKeys.length; i++) {
           if (mainKeys[i] === "address") {
