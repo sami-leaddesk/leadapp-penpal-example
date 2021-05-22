@@ -31,7 +31,7 @@ LeadAppApi()
       try {
         var modifiedContact = {};
         modifiedContact['address'] = {};
-        modifiedContact['other_infos'] = [];
+        modifiedContact['other_infos'] = {};
         var mainKeys = ["first_name", "last_name", "ssc", "title", "www", "birth_year", "gender", "address", "email", "other_infos"];
         for (var i = 0; i < mainKeys.length; i++) {
           if (mainKeys[i] === "address") {
@@ -50,11 +50,8 @@ LeadAppApi()
           } else if (mainKeys[i] === "other_infos") {
             for (var index = 1; index <= 35; index++) {
               if (document.querySelector("#other_infos_" + index).value) {
-                var otherInfos = {
-                  'id': index,
-                  'value': document.querySelector("#other_infos_" + index).value,
-                };
-                modifiedContact['other_infos'].push(otherInfos);
+                modifiedContact['other_infos']['id'] = index;
+                modifiedContact['other_infos']['value'] = document.querySelector("#other_infos_" + index).value;
               }
             }
           } else if (document.querySelector("#" + mainKeys[i]).value) {
